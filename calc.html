@@ -1,0 +1,95 @@
+<html>
+  <style>
+    .c-button {
+      appearance: none;
+      border: 0;
+      border-radius: 5px;
+      background: #4676D7;
+      color: #fff;
+      padding: 32px 32px;
+      font-size: 32px;
+    }
+
+    .c-text {
+      border: 0;
+      padding: 10px;
+      font-size: 1.3em;
+      font-family: Arial, sans-serif;
+      color: #000;
+      border: solid 1px #ccc;
+      margin: 0 0 20px;
+      width: 280px;
+      text-align: right;
+    }
+
+  </style>
+  <br><br>
+  <h1 id="h1">計算しない電卓</h1>
+  <h2>有効桁数は24桁です。</h2>
+  <input id="txtb" type="text" class="c-text" value="0" readonly><br>
+  <button class="c-button" onclick="addtext('7');">７</button>
+  <button class="c-button" onclick="addtext('8');">８</button>
+  <button class="c-button" onclick="addtext('9');">９</button><br>
+  <button class="c-button" onclick="addtext('4');">４</button>
+  <button class="c-button" onclick="addtext('5');">５</button>
+  <button class="c-button" onclick="addtext('6');">６</button><br>
+  <button class="c-button" onclick="addtext('1');">１</button>
+  <button class="c-button" onclick="addtext('2');">２</button>
+  <button class="c-button" onclick="addtext('3');">３</button><br>
+  <button class="c-button" onclick="del();">消</button>
+  <button class="c-button" onclick="addtext('0');">０</button>
+  <button class="c-button" onclick="addtext('.');">・</button><br>
+
+
+  <script>
+    let txtb = document.getElementById("txtb");
+    var last = null;
+    var started = false;
+    var dot = false;
+
+
+    function addtext(txt) {
+      str = txtb.value
+      if (24 > str.length) {
+        if (txt == ".") {
+          if (!started) {
+            started = true;
+            txtb.value = "";
+          }
+          if (dot == true) {
+            return;
+          }
+          if (last == null) {
+            txtb.value += "0" + txt;
+          } else {
+            txtb.value += txt;
+          }
+          dot = true
+        } else if (txt == "0") {
+          if ((txtb.value[0] == "0")) {
+            if (dot == false) {
+              return
+            }
+          }
+          txtb.value += txt;
+        } else {
+          if (!started) {
+            started = true;
+            txtb.value = "";
+          }
+          txtb.value += txt;
+        }
+        last = txt;
+      }
+    }
+
+    function del() {
+      txtb.value = "0";
+      started = false;
+      dot = false;
+      last = null;
+    }
+
+  </script>
+
+</html>
