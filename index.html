@@ -24,19 +24,19 @@ h1{
 <h1 id="h1">0</h1>
 <button class="btn">Text</button>
 <div>
-  <img src="./97D2B7B7-0225-4C06-877B-47151DA1ECAF.png" onclick="change();">
+  <img src="./97D2B7B7-0225-4C06-877B-47151DA1ECAF.png" id="img">
 </div>
 </body>
 <script>
 var h1 = document.getElementById("h1");
 var value = "This is a string in JavaScript.";
-
-
+var img = document.getElementById("img");
+img.setAttribute("onclick","change();");
 var i = 0;
 
 function change()
 {
-  i = (i + 1)
+  i = (i + 1);
   h1.innerText = i / 100;
 }
 
