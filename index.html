@@ -21,8 +21,8 @@ h1{
     font: 400 32px system-ui;
 }
 </style>
-<h1 id="h1"></h1>
-<button class="btn" onclick="increase();">Text</button>
+<h1 id="h1">aaa</h1>
+<button class="btn">Text</button>
 </body>
 <script>
 var h1 = document.getElementById("h1");
@@ -37,11 +37,6 @@ function change()
   h1.innerText = i / 100;
 }
 
-function increase()
-{
-  h1.innerText += "A";
-}
-
-//a = setInterval(change,0);
+a = setInterval(change,0);
 </script>
 </html>
